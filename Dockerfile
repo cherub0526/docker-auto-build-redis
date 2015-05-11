@@ -1,13 +1,12 @@
 # a naive Redis image
 
-FROM centos:5.11
+FROM ubuntu:14.04
 
 # copy to image/container
-COPY redis-2.8.19-1.el5.remi.x86_64.rpm redis-server.rpm
-COPY jemalloc-3.6.0-2.el5.x86_64.rpm    jemalloc.rpm
+COPY redis-server_2.8.19.deb redis-server.deb
 
-# install from RPM
-RUN rpm -i jemalloc.rpm redis-server.rpm
+# install from deb
+RUN dpkg -i redis-server.deb
 
 # start Redis server
 CMD [ "redis-server" ]
